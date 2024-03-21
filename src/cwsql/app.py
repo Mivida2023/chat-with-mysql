@@ -5,11 +5,12 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_community.utilities import SQLDatabase
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
+from langchain_community.chat_models import ChatOllama
 from langchain_groq import ChatGroq
 import streamlit as st
 
-def init_database(user: str, password: str, host: str, port: str, database: str) -> SQLDatabase:
-  db_uri = f"mysql+mysqlconnector://{user}:{password}@{host}:{port}/{database}"
+def init_database(user: str, password: str, host: str, database: str) -> SQLDatabase:
+  db_uri = f"postgresql://{user}:{password}@{host}/{database}"
   return SQLDatabase.from_uri(db_uri)
 
 def get_sql_chain(db):
@@ -37,8 +38,9 @@ def get_sql_chain(db):
     
   prompt = ChatPromptTemplate.from_template(template)
   
-  # llm = ChatOpenAI(model="gpt-4-0125-preview")
-  llm = ChatGroq(model="mixtral-8x7b-32768", temperature=0)
+  llm = ChatOpenAI(model="gpt-4-0125-preview")
+  # llm = ChatGroq(model="mixtral-8x7b-32768", temperature=0)
+  #llm = ChatOllama(model="mistral:instruct")
   
   def get_schema(_):
     return db.get_table_info()
@@ -65,8 +67,10 @@ def get_response(user_query: str, db: SQLDatabase, chat_history: list):
   
   prompt = ChatPromptTemplate.from_template(template)
   
-  # llm = ChatOpenAI(model="gpt-4-0125-preview")
-  llm = ChatGroq(model="mixtral-8x7b-32768", temperature=0)
+  #llm = ChatOllama(model="mistral:instruct")
+  llm = ChatOpenAI(model="gpt-4-0125-preview")
+  # llm = ChatGroq(model="mixtral-8x7b-32768", temperature=0)
+
   
   chain = (
     RunnablePassthrough.assign(query=sql_chain).assign(
@@ -86,36 +90,36 @@ def get_response(user_query: str, db: SQLDatabase, chat_history: list):
   
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = [
-      AIMessage(content="Hello! I'm a SQL assistant. Ask me anything about your database."),
+      AIMessage(content="Salut! Je suis ton assistant Tip's Voyage. Demande moi ce que veux savoir sur la base de données."),
     ]
 
-load_dotenv()
+#load_dotenv()
 
-st.set_page_config(page_title="Chat with MySQL", page_icon=":speech_balloon:")
+st.set_page_config(page_title="Chat avec Postgre",page_icon=":speech_balloon:")
 
-st.title("Chat with MySQL")
+st.title("Chat avec Tip's Voyage")
 
 with st.sidebar:
     st.subheader("Settings")
-    st.write("This is a simple chat application using MySQL. Connect to the database and start chatting.")
+    st.write("Ceci est un chatbot qui utilise Postgresql et Ollama. Connectez-vous à la base de données et commencez vos recherche..")
     
     st.text_input("Host", value="localhost", key="Host")
-    st.text_input("Port", value="3306", key="Port")
-    st.text_input("User", value="root", key="User")
-    st.text_input("Password", type="password", value="admin", key="Password")
-    st.text_input("Database", value="Chinook", key="Database")
+    #st.text_input("Port", value="3306", key="Port")
+    st.text_input("User", value="francois", key="User")
+    st.text_input("Password", type="password", value="240365", key="Password")
+    st.text_input("Database", value="bcu", key="Database")
     
     if st.button("Connect"):
-        with st.spinner("Connecting to database..."):
+        with st.spinner("Connection à la base..."):
             db = init_database(
                 st.session_state["User"],
                 st.session_state["Password"],
                 st.session_state["Host"],
-                st.session_state["Port"],
+                #st.session_state["Port"],
                 st.session_state["Database"]
             )
             st.session_state.db = db
-            st.success("Connected to database!")
+            st.success("Connecté à la base!")
     
 for message in st.session_state.chat_history:
     if isinstance(message, AIMessage):
@@ -125,7 +129,7 @@ for message in st.session_state.chat_history:
         with st.chat_message("Human"):
             st.markdown(message.content)
 
-user_query = st.chat_input("Type a message...")
+user_query = st.chat_input("Ecrivez votre message...")
 if user_query is not None and user_query.strip() != "":
     st.session_state.chat_history.append(HumanMessage(content=user_query))
     
