@@ -54,4 +54,4 @@ As this repository accompanies the [YouTube video tutorial](https://youtu.be/Yqq
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 
-Happy Coding! 🚀👨‍💻🤖 thank you [Alejendro](https://www.youtube.com/redirect?event=channel_header&redir_token=QUFFLUhqbkZ6OGs4WkxubjhRdFFyTGpDME1KVk8zbTFod3xBQ3Jtc0ttVnFWS3BwWlFZenI2ald3QlZZZl9yczY0LTVTS2ZWczc2THVfMDlUbzFHaGE0SUNicGJONGpXNTkxYS1RWlZlRGNlOEVKUUUyc29LNFAybnRzU251ZTFxdGxQREdhMFNhYWxpTFN2b1FKOE9IRTdTaw&q=https%3A%2F%2Falejandro-ao.com%2F) 
+Happy Coding! 🚀👨‍💻🤖 and Thank You [Alejandro](https://www.youtube.com/redirect?event=channel_header&redir_token=QUFFLUhqbkZ6OGs4WkxubjhRdFFyTGpDME1KVk8zbTFod3xBQ3Jtc0ttVnFWS3BwWlFZenI2ald3QlZZZl9yczY0LTVTS2ZWczc2THVfMDlUbzFHaGE0SUNicGJONGpXNTkxYS1RWlZlRGNlOEVKUUUyc29LNFAybnRzU251ZTFxdGxQREdhMFNhYWxpTFN2b1FKOE9IRTdTaw&q=https%3A%2F%2Falejandro-ao.com%2F) 
