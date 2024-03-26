@@ -1,0 +1,63 @@
+/** SIDE BAR */
+.st-emotion-cache-16txtl3{
+    padding: 1rem 1rem;
+}
+.st-emotion-cache-6qob1r {
+    /**background-color: #00a5e1;**/
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    h2 {
+        
+    }
+
+    h3 {
+        color: black;
+    }
+
+    p {
+      
+    }
+    .st-emotion-cache-l9bjmx:hover {
+        color:#00a5e1;
+    }
+    /** SIDE BAR BUTTON */
+    .st-emotion-cache-13ejsyy{
+        background-color: #00a5e1;
+        padding: 5px;
+        width: 80px;
+        color: aliceblue !important;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .st-emotion-cache-13ejsyy:hover {
+        background-color: rgb(155, 128, 10);
+    }
+    /** EXPANDER */
+    .st-emotion-cache-1mhtumg{
+       
+    }
+    /** SELECT */
+    .st-emotion-cache-1h9usn1{
+        background-color: #ffffff;
+        padding: 10px;
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        p{
+            font-weight: 700;
+            font-size: medium;
+        }
+    }
+  
+}
+
+.st-emotion-cache-p4micv {
+    border-radius: 1.5rem;
+}
